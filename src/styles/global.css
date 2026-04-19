@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --color-mmj-indigo: #0D1117;
+  --color-mmj-gold: #C5A059;
+  --color-mmj-gold-light: #D4AF37;
+  
+  --font-inter: "Inter", sans-serif;
+}
+
+:root {
+  font-family: var(--font-inter);
+}

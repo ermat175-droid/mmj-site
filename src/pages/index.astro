@@ -1,11 +1,94 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import MainLayout from '../layouts/MainLayout.astro';
 ---
+<MainLayout title="MMJ — Поставки строительных материалов | B2B Каталог">
+  <section class="relative bg-mmj-indigo py-28 md:py-40 px-6 overflow-hidden">
+    <div class="absolute top-0 right-0 w-1/3 h-full bg-mmj-gold/5 blur-[120px] rounded-full"></div>
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="inline-block border border-mmj-gold/50 text-mmj-gold px-4 py-1.5 mb-8 text-[10px] font-bold uppercase tracking-[0.3em]">
+        Официальный дилер
+      </div>
+      <h1 class="text-white text-5xl md:text-8xl font-bold leading-[0.9] mb-10 tracking-tighter">
+        КОМПЛЕКТАЦИЯ <br/> <span class="text-mmj-gold italic">ОБЪЕКТОВ</span>
+      </h1>
+      <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed">
+        Обеспечиваем бесперебойные поставки кирпича, плитки и смесей для крупных застройщиков Казахстана. Работаем с любыми объемами.
+      </p>
+      <div class="flex flex-wrap gap-5">
+        <a href="#catalog" class="bg-mmj-gold hover:bg-white text-mmj-indigo px-12 py-5 font-bold uppercase text-xs tracking-widest transition-all">Открыть каталог</a>
+        <a href="#contacts" class="border border-white/20 text-white hover:bg-white/5 px-12 py-5 font-bold uppercase text-xs tracking-widest transition-all">Запросить расчет</a>
+      </div>
+    </div>
+  </section>
 
-<Layout>
-	<Welcome />
-</Layout>
+  <section id="about" class="py-24 px-6 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
+      <div>
+        <span class="text-mmj-gold font-bold text-lg">01</span>
+        <h3 class="text-xl font-bold mt-4 mb-4 uppercase tracking-tight">Надежность</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Строгое соблюдение сроков поставок и гарантия качества каждой партии материалов.</p>
+      </div>
+      <div>
+        <span class="text-mmj-gold font-bold text-lg">02</span>
+        <h3 class="text-xl font-bold mt-4 mb-4 uppercase tracking-tight">Масштаб</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Опыт работы с крупными жилыми комплексами и государственными тендерами.</p>
+      </div>
+      <div>
+        <span class="text-mmj-gold font-bold text-lg">03</span>
+        <h3 class="text-xl font-bold mt-4 mb-4 uppercase tracking-tight">Цены</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Прямые контракты с заводами позволяют нам предлагать лучшие условия для B2B.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="catalog" class="py-24 px-6 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex justify-between items-end mb-16">
+        <h2 class="text-4xl font-bold tracking-tighter uppercase">Продукция</h2>
+        <p class="hidden md:block text-gray-400 text-sm max-w-xs text-right italic">Более 1000 наименований в наличии и под заказ</p>
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {['Кирпич и блоки', 'Керамогранит', 'Теплоизоляция', 'Сухие смеси', 'ЛКМ', 'Кровельные материалы'].map(cat => (
+          <div class="group bg-white p-12 border border-gray-200 hover:shadow-2xl hover:shadow-mmj-indigo/5 transition-all relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-6 text-gray-100 text-6xl font-bold transition-colors group-hover:text-mmj-gold/10 leading-none select-none">
+              MMJ
+            </div>
+            <h3 class="text-2xl font-bold mb-6 relative z-10">{cat}</h3>
+            <div class="w-10 h-1 bg-mmj-gold mb-8 transition-all group-hover:w-full relative z-10"></div>
+            <button class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-mmj-indigo relative z-10 transition-colors">Смотреть раздел →</button>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="contacts" class="py-32 px-6 bg-white relative">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-6 tracking-tighter">ОСТАВИТЬ ЗАЯВКУ</h2>
+        <p class="text-gray-500">Заполните форму, и наш менеджер свяжется с вами для уточнения деталей поставки.</p>
+      </div>
+      
+      <form name="contact" method="POST" data-netlify="true" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="flex flex-col">
+            <label class="text-[10px] uppercase font-bold tracking-widest mb-2 text-gray-400">Имя</label>
+            <input type="text" name="name" class="bg-gray-50 border-b border-gray-200 p-4 focus:border-mmj-gold outline-none transition-colors" placeholder="Иван Иванов" required />
+          </div>
+          <div class="flex flex-col">
+            <label class="text-[10px] uppercase font-bold tracking-widest mb-2 text-gray-400">Телефон</label>
+            <input type="tel" name="phone" class="bg-gray-50 border-b border-gray-200 p-4 focus:border-mmj-gold outline-none transition-colors" placeholder="+7 (___) ___-__-__" required />
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <label class="text-[10px] uppercase font-bold tracking-widest mb-2 text-gray-400">Сообщение / Список товаров</label>
+          <textarea name="message" class="bg-gray-50 border-b border-gray-200 p-4 focus:border-mmj-gold outline-none transition-colors h-32 resize-none" placeholder="Напишите, что вас интересует..."></textarea>
+        </div>
+        <button type="submit" class="w-full bg-mmj-indigo text-white py-6 font-bold uppercase text-xs tracking-[0.3em] hover:bg-mmj-gold hover:text-mmj-indigo transition-all">
+          Отправить запрос на расчет
+        </button>
+      </form>
+    </div>
+  </section>
+</MainLayout>

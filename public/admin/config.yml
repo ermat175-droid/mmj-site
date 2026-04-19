@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  branch: master # или main, проверьте название вашей ветки в терминале
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "products"
+    label: "Товары"
+    folder: "src/content/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Название", name: "title", widget: "string" }
+      - { label: "Категория", name: "category", widget: "select", options: ["Кирпич", "Плитка", "Смеси", "Изоляция"] }
+      - { label: "Изображение", name: "image", widget: "image" }
+      - { label: "Характеристики", name: "specs", widget: "markdown" }
+      - { label: "Ед. измерения", name: "unit", widget: "string", default: "шт" }
