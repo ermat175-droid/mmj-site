@@ -1,0 +1,50 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Получаем все записи из папки src/content/products
+const products = await getCollection('products');
+---
+
+<MainLayout title="Каталог продукции | MMJ">
+  <section class="py-20 px-6 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-4xl font-bold mb-12 uppercase tracking-tighter">Наш ассортимент</h1>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {products.map((product) => (
+          <div class="bg-white border border-gray-200 group hover:border-mmj-gold transition-all">
+            <div class="aspect-square overflow-hidden bg-gray-100">
+              <img 
+                src={product.data.image} 
+                alt={product.data.title} 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform"
+              />
+            </div>
+            <div class="p-8">
+              <div class="text-[10px] text-mmj-gold font-bold uppercase mb-2">{product.data.category}</div>
+              <h3 class="text-xl font-bold mb-4">{product.data.title}</h3>
+              <p class="text-gray-500 text-sm mb-6 line-clamp-2">{product.data.description}</p>
+              
+              <div class="flex justify-between items-center border-t border-gray-100 pt-6">
+                <span class="text-xs font-bold uppercase tracking-widest text-gray-400">
+                   {product.data.unit || 'шт'}
+                </span>
+                <a href={`https://wa.me/77011234567?text=Запрос по товару: ${product.data.title}`} 
+                   class="text-mmj-indigo font-bold text-xs uppercase hover:text-mmj-gold">
+                   Запросить цену
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {products.length === 0 && (
+        <div class="text-center py-20 text-gray-400">
+          Каталог наполняется. Скоро здесь появятся товары.
+        </div>
+      )}
+    </div>
+  </section>
+</MainLayout>
