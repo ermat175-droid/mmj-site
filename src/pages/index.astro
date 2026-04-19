@@ -49,17 +49,17 @@ import MainLayout from '../layouts/MainLayout.astro';
       </div>
       
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {['Кирпич и блоки', 'Керамогранит', 'Теплоизоляция', 'Сухие смеси', 'ЛКМ', 'Кровельные материалы'].map(cat => (
-          <div class="group bg-white p-12 border border-gray-200 hover:shadow-2xl hover:shadow-mmj-indigo/5 transition-all relative overflow-hidden">
-            <div class="absolute top-0 right-0 p-6 text-gray-100 text-6xl font-bold transition-colors group-hover:text-mmj-gold/10 leading-none select-none">
-              MMJ
-            </div>
-            <h3 class="text-2xl font-bold mb-6 relative z-10">{cat}</h3>
-            <div class="w-10 h-1 bg-mmj-gold mb-8 transition-all group-hover:w-full relative z-10"></div>
-            <button class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-mmj-indigo relative z-10 transition-colors">Смотреть раздел →</button>
-          </div>
-        ))}
-      </div>
+	  {['Кирпич и блоки', 'Керамогранит', 'Теплоизоляция', 'Сухие смеси', 'ЛКМ', 'Кровельные материалы'].map(cat => (
+		<a href="/catalog" class="group bg-white p-12 border border-gray-200 hover:shadow-2xl hover:shadow-mmj-indigo/5 transition-all relative overflow-hidden">
+		<div class="absolute top-0 right-0 p-6 text-gray-100 text-6xl font-bold transition-colors group-hover:text-mmj-gold/10 leading-none select-none">
+		MMJ
+		</div>
+		<h3 class="text-2xl font-bold mb-6 relative z-10">{cat}</h3>
+        <div class="w-10 h-1 bg-mmj-gold mb-8 transition-all group-hover:w-full relative z-10"></div>
+        <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-mmj-indigo relative z-10 transition-colors">Смотреть раздел →</span>
+		</a>
+		))}
+		</div>
     </div>
   </section>
 
